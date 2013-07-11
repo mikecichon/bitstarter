@@ -93,17 +93,15 @@ if(require.main == module) {
         .option('-u, --url <url>', 'url to application')
         .parse(process.argv);
 
-    var html = "";
     if(program.url){
       getFileFromUrl(program.url, program.checks, checkHtml);
       return;
     } else {
-      html = program.file;
+      var checkJson = checkHtmlFile(html, program.checks);
+      var outJson = JSON.stringify(checkJson, null, 4);
+      console.log(outJson);
     }
-
-    var checkJson = checkHtmlFile(html, program.checks);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
+    
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
