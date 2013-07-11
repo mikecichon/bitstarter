@@ -97,11 +97,11 @@ if(require.main == module) {
       getFileFromUrl(program.url, program.checks, checkHtml);
       return;
     } else {
-      var checkJson = checkHtmlFile(html, program.checks);
+      var checkJson = checkHtmlFile(program.file, program.checks);
       var outJson = JSON.stringify(checkJson, null, 4);
       console.log(outJson);
     }
-    
+
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
